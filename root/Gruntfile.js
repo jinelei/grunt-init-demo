@@ -46,7 +46,6 @@ module.exports = function(grunt) {
                     cwd: '<%= meta.devPath %>/js',
                     src:'*.js',
                     dest: '<%= meta.prodPath %>/js',
-                    ext: '.min.js'
                 }]
             }
         },
@@ -77,9 +76,9 @@ module.exports = function(grunt) {
                 files: [{
                     expand: true,
                     cwd: '<%= meta.devPath %>/css',
-                    src: ['*.css', '!*.min.css'],
+                    src: ['*.css'],
                     dest: '<%= meta.prodPath %>/css',
-                    ext: '.min.css'
+                    ext: '.css'
                 }]
             }
         },
