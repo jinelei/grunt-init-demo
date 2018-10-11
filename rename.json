@@ -1,0 +1,5 @@
+{
+  "src/*.js": "js/",
+  "src/*.less": "less/",
+  "src/*.html": "/"
+}
