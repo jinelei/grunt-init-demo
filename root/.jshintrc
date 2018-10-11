@@ -1,6 +1,5 @@
 {
   "curly": true,
-  "esnext": true,
   "eqeqeq": true,
   "immed": true,
   "latedef": true,
@@ -11,5 +10,6 @@
   "unused": true,
   "boss": true,
   "eqnull": true,
-  "node": true
+  "browser": true,
+  "predef": ["jQuery"]
 }
