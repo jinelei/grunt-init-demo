@@ -7,8 +7,8 @@ module.exports = function(grunt) {
         // 元数据
         meta: {
             srcPath: 'src',
-            devEnv: 'dev',
-            prodEnv: 'prod'
+            devPath: 'dev',
+            prodPath: 'prod'
         },
 
         // 拷贝html文件
@@ -17,19 +17,19 @@ module.exports = function(grunt) {
                 expand: true,
                 cwd: '<%= meta.srcPath %>',
                 src: 'index.html',
-                dest: '<%= meta.prodEnv %>'
+                dest: '<%= meta.prodPath %>'
             },
             dev: {
                 expand: true,
                 cwd: '<%= meta.srcPath %>',
                 src: 'index.html',
-                dest: '<%= meta.devEnv %>'
+                dest: '<%= meta.devPath %>'
             }
         },
 
         // 清理目录
         clean: {
-            src: ['<%= meta.devEnv %>', '<%= meta.prodEnv %>']
+            src: ['<%= meta.devPath %>', '<%= meta.prodPath %>']
         },
 
         // 输出js
@@ -43,9 +43,9 @@ module.exports = function(grunt) {
             prod: {
                 files: [{
                     expand:true,
-                    cwd: '<%= meta.devEnv %>/js',
+                    cwd: '<%= meta.devPath %>/js',
                     src:'*.js',
-                    dest: '<%= meta.prodEnv %>/js',
+                    dest: '<%= meta.prodPath %>/js',
                     ext: '.min.js'
                 }]
             }
@@ -53,7 +53,7 @@ module.exports = function(grunt) {
 
         // jshint插件的配置信息(js语法规整校验插件)
         jshint: {
-            build: ['Gruntfils.js', '<%= meta.srcPath %>/js/*.js'],
+            build: ['Gruntfils.js', '<%= meta.devPath %>/js/*.js'],
             options: {
                 jshintrc: '.jshintrc'
             }
@@ -66,7 +66,7 @@ module.exports = function(grunt) {
                     banner: '/*! author: jinelei <%= grunt.template.today("yyyy-mm-dd") %> */\n\n'
                 },
                 files: {
-                    '<%= meta.devEnv %>/css/test.css': '<%= meta.srcPath %>/less/test.less'
+                    '<%= meta.devPath %>/css/main.css': '<%= meta.srcPath %>/less/main.less'
                 }
             }
         },
@@ -76,9 +76,9 @@ module.exports = function(grunt) {
             target: {
                 files: [{
                     expand: true,
-                    cwd: '<%= meta.devEnv %>/css',
+                    cwd: '<%= meta.devPath %>/css',
                     src: ['*.css', '!*.min.css'],
-                    dest: '<%= meta.prodEnv %>/css',
+                    dest: '<%= meta.prodPath %>/css',
                     ext: '.min.css'
                 }]
             }
@@ -94,7 +94,7 @@ module.exports = function(grunt) {
                     expand:true,
                     cwd:'<%= meta.srcPath %>/js/',
                     src:['*.js'],
-                    dest:'<%= meta.devEnv %>/js'
+                    dest:'<%= meta.devPath %>/js'
                 }]
             }
         },
@@ -113,7 +113,7 @@ module.exports = function(grunt) {
                 }
             },
             clientcss: {
-                files: ['<%= meta.prodEnv %>/less/*.css'],
+                files: ['<%= meta.prodPath %>/less/*.css'],
                 tasks: ['cssmin'],
                 options: {
                     livereload: true
@@ -128,8 +128,8 @@ module.exports = function(grunt) {
                 tasks:['copy']
             },
             build: {
-                files: ['<%= meta.srcPath %>/js/*.js', '<%= meta.prodEnv %>/js/*.js', '<%= meta.prodEnv %>/css/*.css'],
-                tasks: ['jshint', 'uglify'],
+                files: ['<%= meta.srcPath %>/js/*.js', '<%= meta.prodPath %>/js/*.js', '<%= meta.prodPath %>/css/*.css'],
+                tasks: ['default'],
                 options: {
                     spawn: false,
                     livereload: true
