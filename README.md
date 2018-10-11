@@ -1,9 +1,9 @@
 # grunt template: jinelei
 
 ## 使用说明
-直接运行```grunt```即调用default定义的方法进行调用
+1. 直接运行```grunt```即调用default定义的方法进行调用
 
-直接运行```grunt budil```打包文件，输出到dev（开发环境）、prod（发布环境）
+1. 直接运行```grunt budil```打包文件，输出到dev（开发环境）、prod（发布环境）
 
 ## 注册以下任务
 
