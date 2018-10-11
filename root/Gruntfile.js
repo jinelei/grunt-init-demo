@@ -148,8 +148,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
 
     // 默认被执行的任务列表。
-    grunt.registerTask('default', ['clean', 'copy', 'babel', 'uglify', 'jshint', 'less', 'cssmin', 'watch']);
+    grunt.registerTask('default', ['clean', 'copy', 'babel', 'jshint', 'uglify', 'less', 'cssmin', 'watch']);
 
-    grunt.registerTask('build', ['clean', 'copy:prod', 'babel', 'uglify', 'jshint', 'less', 'cssmin']);
+    grunt.registerTask('build', ['clean', 'copy:prod', 'babel', 'jshint', 'uglify', 'less', 'cssmin']);
 
 };
