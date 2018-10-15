@@ -48,12 +48,11 @@ exports.template = function(grunt, init, done) {
 
             node_version: '>= 0.10.0',
             devDependencies: {
-		"autoprefixer": "^9.2.0",
+                "autoprefixer": "^9.2.0",
                 "babel": "^6.23.0",
                 "babel-core": "^6.26.3",
                 "babel-preset-es2015": "^6.24.1",
                 "grunt": "~0.4.5",
-		"grunt-autoprefixer": "^3.0.4",
                 "grunt-babel": "^7.0.0",
                 "grunt-contrib-clean": "^2.0.0",
                 "grunt-contrib-copy": "^1.0.0",
@@ -64,7 +63,7 @@ exports.template = function(grunt, init, done) {
                 "grunt-contrib-rename": "^0.2.0",
                 "grunt-contrib-uglify": "~0.5.0",
                 "grunt-contrib-watch": "^1.1.0",
-		"grunt-postcss": "^0.9.0"
+                "grunt-postcss": "^0.9.0"
             }
         })
         // All done!
