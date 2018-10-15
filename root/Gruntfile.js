@@ -54,6 +54,7 @@ module.exports = function(grunt) {
         jshint: {
             build: ['Gruntfils.js', '<%= meta.srcPath %>/js/*.js'],
             options: {
+		force: true,
                 esversion: 6,
                 curly: true,
                 eqeqeq: true,
