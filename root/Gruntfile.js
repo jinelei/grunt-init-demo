@@ -112,20 +112,43 @@ module.exports = function(grunt) {
             }
         },
 
+	postcss: {
+	    options: {
+		processors: [
+		    require('autoprefixer')({browsers: [
+			"iOS >= 7",
+			"Android > 4.1",
+			"Firefox > 20",
+			"last 2 versions"
+			]})
+		]
+	    },
+    	    dist: {
+		src: '<%= meta.devPath %>/css/main.css',
+		dest: '<%= meta.devPath %>/css/main.css'
+	    }
+	},
+
         //watch插件的配置信息(监控js,css文件,如改变自动压缩,语法检查)
         watch: {
             gruntfile: {
                 files:'Gruntfile.js',
                 tasks:['default']
             },
-            client: {
+            less: {
                 files: ['<%= meta.srcPath %>/less/*.less'],
                 tasks: ['less'],
                 options: {
                     livereload: true
                 }
             },
-            clientcss: {
+            prefixcss: {
+                files: ['<%= meta.devPath %>/css/*.css'],
+                tasks: ['postcss'],
+                options: {
+                }
+            },
+            css: {
                 files: ['<%= meta.prodPath %>/less/*.css'],
                 tasks: ['cssmin'],
                 options: {
@@ -160,10 +183,14 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-autoprefixer');
+    grunt.loadNpmTasks('grunt-postcss');
 
     // 默认被执行的任务列表。
-    grunt.registerTask('default', ['clean', 'copy', 'babel', 'jshint', 'uglify', 'less', 'cssmin', 'watch']);
+    grunt.registerTask('default', ['clean', 'copy', 'babel', 'jshint', 'uglify', 'less', 'postcss', 'cssmin', 'watch']);
 
-    grunt.registerTask('build', ['clean', 'copy:prod', 'babel', 'jshint', 'uglify', 'less', 'cssmin']);
+    grunt.registerTask('build', ['clean', 'copy:prod', 'babel', 'jshint', 'uglify', 'less', 'postcss', 'cssmin']);
+
+    grunt.registerTask('css', ['postcss']);
 
 };
