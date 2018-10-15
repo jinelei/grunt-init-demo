@@ -52,9 +52,22 @@ module.exports = function(grunt) {
 
         // jshint插件的配置信息(js语法规整校验插件)
         jshint: {
-            build: ['Gruntfils.js', '<%= meta.devPath %>/js/*.js'],
+            build: ['Gruntfils.js', '<%= meta.srcPath %>/js/*.js'],
             options: {
-                jshintrc: '.jshintrc'
+                esversion: 6,
+                curly: true,
+                eqeqeq: true,
+                immed: true,
+                latedef: true,
+                newcap: true,
+                noarg: true,
+                sub: true,
+                undef: true,
+                unused: true,
+                boss: true,
+                eqnull: true,
+                devel: true,
+                browser: true
             }
         },
 
