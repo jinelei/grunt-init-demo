@@ -1,52 +1,36 @@
-/*
- * grunt-init-jquery
- * https://gruntjs.com/
- *
- * Copyright (c) 2013 "Cowboy" Ben Alman, contributors
- * Licensed under the MIT license.
- */
-
 'use strict';
 
-// Basic template description.
 exports.description = 'Grunt jinelei template';
-
-// Template-specific notes to be displayed before question prompts.
 exports.notes = '这个项目模板仅供参考';
-
-// Template-specific notes to be displayed after question prompts.
 exports.after = '项目已经搭建好了';
-
-// Any existing file or directory matching this wildcard will cause a warning.
 exports.warnOn = '*';
 
-// The actual init template.
+
 exports.template = function(grunt, init, done) {
 
     init.process({type: 'jinelei'}, [
-        // Prompt for these values.
         init.prompt('name'),
         init.prompt('title'),
-        init.prompt('description', 'jinelei 项目骨架'),
+        init.prompt('repository', 'https://github.com/jinelei/grunt-template-jinelei'),
+        init.prompt('homepage', 'https://github.com/jinelei/grunt-template-jinelei'),
+        init.prompt('description', '项目模板'),
         init.prompt('version', '1.0.0'),
-        init.prompt('author_name'),
-        init.prompt('author_email')
+        init.prompt('node_version', '>= 0.10.0'),
+        init.prompt('npm_test', 'grunt'),
+        init.prompt('author_name', 'jinelei'),
+        init.prompt('author_email', 'jinelei@163.com')
     ], function(err, props) {
         props.keywords = [];
 
-        // 需要拷贝处理的文件，这句一般不用改它
         var files = init.filesToCopy(props);
 
-        // 实际修改跟处理的文件，noProcess表示不进行处理
         init.copyAndProcess(files, props, {noProcess: 'libs/**'});
 
-        // 生成package.json，供Grunt、npm使用
         init.writePackageJSON('package.json', {
-            name: 'JINELEI',
-            version: '1.0.0',
-            npm_test: 'grunt qunit',
-
-            node_version: '>= 0.10.0',
+            name: props.name,
+            version: props.version,
+            node_version: props.node_version,
+            npm_test: props.npm_test,
             devDependencies: {
                 "autoprefixer": "^9.2.0",
                 "babel": "^6.23.0",
@@ -59,14 +43,12 @@ exports.template = function(grunt, init, done) {
                 "grunt-contrib-cssmin": "^3.0.0",
                 "grunt-contrib-jshint": "0.11.1",
                 "grunt-contrib-less": "^2.0.0",
-                "grunt-contrib-nodeunit": "~0.4.1",
                 "grunt-contrib-rename": "^0.2.0",
                 "grunt-contrib-uglify": "~0.5.0",
                 "grunt-contrib-watch": "^1.1.0",
                 "grunt-postcss": "^0.9.0"
             }
         })
-        // All done!
         done();
     });
 };

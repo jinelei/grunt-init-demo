@@ -1,5 +1,6 @@
 {
   "src/*.js": "js/",
   "src/*.less": "less/",
-  "src/*.html": "/"
+  "src/": "/",
+  ".gitignore": "/.gitignore"
 }
