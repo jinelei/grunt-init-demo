@@ -88,6 +88,16 @@ module.exports = function(grunt) {
       }
     },
 
+    connect: {
+      server: {
+        options: {
+          port: 8000,
+          hostname: "*",
+          base: ["<%= meta.distPath %>/"]
+        }
+      }
+    },
+
     //watch插件的配置信息(监控js,css文件,如改变自动压缩,语法检查)
     watch: {
       gruntfile: {
@@ -97,9 +107,7 @@ module.exports = function(grunt) {
       less: {
         files: ["<%= meta.srcPath %>/less/*.less"],
         tasks: ["less"],
-        options: {
-          livereload: true
-        }
+        options: {}
       },
       prefixcss: {
         files: ["<%= meta.distPath %>/css/*.css"],
@@ -109,9 +117,7 @@ module.exports = function(grunt) {
       css: {
         files: ["<%= meta.distPath %>/less/*.css"],
         tasks: ["cssmin"],
-        options: {
-          livereload: true
-        }
+        options: {}
       },
       babel: {
         files: "<%= meta.srcPath %>/js/*.js",
@@ -139,8 +145,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks("grunt-contrib-jshint");
   grunt.loadNpmTasks("grunt-contrib-less");
   grunt.loadNpmTasks("grunt-contrib-watch");
+  grunt.loadNpmTasks("grunt-contrib-connect");
   grunt.loadNpmTasks("grunt-postcss");
 
   // 默认被执行的任务列表。
   grunt.registerTask("default", ["clean", "copy", "babel", "jshint", "less", "postcss", "watch"]);
+  grunt.registerTask("serve", ["connect", "watch"]);
 };

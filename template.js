@@ -39,6 +39,7 @@ exports.template = function(grunt, init, done) {
                 "grunt": "~0.4.5",
                 "grunt-babel": "^7.0.0",
                 "grunt-contrib-clean": "^2.0.0",
+                "grunt-contrib-connect": "^2.0.0",
                 "grunt-contrib-copy": "^1.0.0",
                 "grunt-contrib-cssmin": "^3.0.0",
                 "grunt-contrib-jshint": "0.11.1",
